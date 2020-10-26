@@ -15,4 +15,5 @@ setup(
     description="",
     license="MIT",
     zip_safe=True,
+    packages=['vilbert']
 )

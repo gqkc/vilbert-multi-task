@@ -176,7 +176,10 @@ class RetreivalDataset(Dataset):
 
     def __getitem__(self, index):
         entry = self._entries[index]
-        image_id = entry["image_id"]
+        #image_id = entry["image_id"]
+        image_id=random.choice(self._image_features_reader._image_ids)
+        print("imageids {}".format(self._image_features_reader._image_ids))
+        print("id {}".format(image_id))
 
         features, num_boxes, boxes, _ = self._image_features_reader[image_id]
 
@@ -203,12 +206,12 @@ class RetreivalDataset(Dataset):
 
         while True:
             # sample a random image:
-            img_id2 = random.choice(self.image_id_list)
+            img_id2 = random.choice(self._image_features_reader._image_ids)
             if img_id2 != image_id:
                 break
+        print(img_id2)
 
         entry2 = self._entries[random.choice(self.imgid2entry[img_id2])]
-
         features2 = features1
         image_mask2 = image_mask1
         spatials2 = spatials1
@@ -219,7 +222,7 @@ class RetreivalDataset(Dataset):
         # random image wrong
         while True:
             # sample a random image:
-            img_id3 = random.choice(self.image_id_list)
+            img_id3 = random.choice(self._image_features_reader._image_ids)
             if img_id3 != image_id:
                 break
 
@@ -254,7 +257,7 @@ class RetreivalDataset(Dataset):
         else:
             while True:
                 # sample a random image:
-                img_id4 = random.choice(self.image_id_list)
+                img_id4 = random.choice(self._image_features_reader._image_ids)
                 if img_id4 != image_id:
                     break
 

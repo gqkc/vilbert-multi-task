@@ -11,17 +11,13 @@ import random
 from io import open
 import numpy as np
 
-from tensorboardX import SummaryWriter
 from tqdm import tqdm
-from bisect import bisect
 import yaml
 from easydict import EasyDict as edict
 
-import pdb
 import sys
 import torch
 import torch.nn.functional as F
-import torch.nn as nn
 
 from pytorch_transformers.optimization import (
     AdamW,
@@ -40,7 +36,6 @@ from torch.optim.lr_scheduler import (
     LambdaLR,
     ReduceLROnPlateau,
     CosineAnnealingLR,
-    CosineAnnealingWarmRestarts,
 )
 
 import vilbert.utils as utils

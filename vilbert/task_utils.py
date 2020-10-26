@@ -406,17 +406,7 @@ def LoadDatasets(args, task_cfg, ids, split="trainval"):
         if task_cfg[task]["features_h5path2"] not in task_feature_reader2:
             task_feature_reader2[task_cfg[task]["features_h5path2"]] = None
 
-    # initilzie the feature reader
-    for features_h5path in task_feature_reader1.keys():
-        if features_h5path != "":
-            task_feature_reader1[features_h5path] = ImageFeaturesH5Reader(
-                features_h5path, args.in_memory
-            )
-    for features_h5path in task_feature_reader2.keys():
-        if features_h5path != "":
-            task_feature_reader2[features_h5path] = ImageFeaturesH5Reader(
-                features_h5path, args.in_memory
-            )
+
 
     task_datasets_train = {}
     task_datasets_val = {}
