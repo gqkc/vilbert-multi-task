@@ -7,6 +7,8 @@
 
 from setuptools import setup, find_packages
 
+REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
+
 setup(
     name="vilbert_multi_task",
     version="0.1.0",
@@ -15,4 +17,5 @@ setup(
     license="MIT",
     zip_safe=True,
     packages=find_packages(),
+    install_requires=REQUIREMENTS
 )
