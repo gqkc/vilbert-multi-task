@@ -5,8 +5,7 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-from setuptools import setup
-
+from setuptools import setup, find_packages
 
 setup(
     name="vilbert_multi_task",
@@ -15,5 +14,5 @@ setup(
     description="",
     license="MIT",
     zip_safe=True,
-    packages=['vilbert']
+    packages=find_packages(),
 )
