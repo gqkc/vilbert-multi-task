@@ -17,6 +17,7 @@ setup(
     license="MIT",
     zip_safe=True,
     packages=find_packages(),
-    install_requires=REQUIREMENTS
+    install_requires=REQUIREMENTS,
+    dependency_links=['https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.5.0-py3-none-any.whl']
 
 )
