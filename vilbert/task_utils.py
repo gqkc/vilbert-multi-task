@@ -609,8 +609,8 @@ def compute_score_with_logits(logits, labels):
     logits = torch.max(logits, 1)[1].data  # argmax
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     one_hots = torch.zeros(*labels.size()).to(device)
-    one_hots.scatter_(1, logits.view(-1, 1), 1)
-    scores = one_hots * labels
+    one_hots.scatter_(1, logits.view(-1, 1).to(device), 1)
+    scores = one_hots.to(device) * labels.to(device)
     return scores
 
 
