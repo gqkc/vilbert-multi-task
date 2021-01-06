@@ -605,9 +605,10 @@ def LoadDatasetEval(args, task_cfg, ids):
     )
 
 
-def compute_score_with_logits(logits, labels):
-    logits = torch.max(logits, 1)[1].data  # argmax
-    one_hots = torch.zeros(*labels.size()).cuda()
+def compute_score_with_logits(logits, labels, device):
+    logits = torch.max(logits, 1)[1].data.to(device)  # argmax
+    #one_hots = torch.zeros(*labels.size()).cuda()
+    one_hots = torch.zeros(*labels.size()).to(device)
     one_hots.scatter_(1, logits.view(-1, 1), 1)
     scores = one_hots * labels
     return scores
