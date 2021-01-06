@@ -369,9 +369,8 @@ def instance_bce_with_logits(logits, labels):
     return loss
 
 
-def compute_score_with_logits(logits, labels):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    logits = torch.max(logits, 1)[1].data  # argmax
+def compute_score_with_logits(logits, labels, device):
+    logits = torch.max(logits, 1)[1].data.to(device)  # argmax
     one_hots = torch.zeros(*labels.size()).to(device)
     one_hots.scatter_(1, logits.view(-1, 1), 1)
     scores = one_hots * labels
